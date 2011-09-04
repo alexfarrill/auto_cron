@@ -12,7 +12,7 @@ Capistrano::Configuration.instance.load do
         targets = []
         targets.push sessions[sd]
     
-        Command.process( "cd #{release_path} && rake TEMPLATE=#{sd.options[:crontab]} RAILS_ENV=#{rails_env} auto_cron", 
+        Command.process( "cd #{release_path} && #{rake} TEMPLATE=#{sd.options[:crontab]} RAILS_ENV=#{rails_env} auto_cron", 
                           targets, options.merge(:logger => logger), &block)
 
         logger.debug "creating crontab:#{sd.options[:crontab]} on #{sd.host}"
