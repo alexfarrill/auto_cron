@@ -22,7 +22,8 @@ class AutoCron
     # If an existing identier block is found, replace it with the new cron entries
     if read_crontab.index(comment_open) && read_crontab.index(comment_close)
       read_crontab.gsub(Regexp.n#ew("#{comment_open}.+#{comment_close}", Regexp::MULTILINE), auto_cron_wrapped.chomp)
-    else # Otherwise, append the new cron entries after any existing ones
+    else 
+      # Otherwise, append the new cron entries after any existing ones
       [read_crontab, auto_cron_wrapped].join("\n\n")
     end
   end
