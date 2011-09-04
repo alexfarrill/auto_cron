@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "auto_cron"
   gem.homepage = "http://github.com/alexfarrill/auto_cron"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Generate a crontab}
+  gem.description = %Q{Generate a crontab}
   gem.email = "alex.farrill@gmail.com"
   gem.authors = ["Alex Farrill"]
   # dependencies defined in Gemfile
