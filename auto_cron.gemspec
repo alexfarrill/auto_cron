@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "auto_cron.gemspec",
     "generators/auto_cron/auto_cron_generator.rb",
     "generators/auto_cron/templates/header.erb",
     "generators/auto_cron/templates/publish.erb",
