@@ -21,7 +21,7 @@ class AutoCron
   
     # If an existing identier block is found, replace it with the new cron entries
     if read_crontab.index(comment_open) && read_crontab.index(comment_close)
-      read_crontab.gsub(Regexp.new("#{comment_open}.+#{comment_close}", Regexp::MULTILINE), auto_cron_wrapped.chomp)
+      read_crontab.gsub(Regexp.n#ew("#{comment_open}.+#{comment_close}", Regexp::MULTILINE), auto_cron_wrapped.chomp)
     else # Otherwise, append the new cron entries after any existing ones
       [read_crontab, auto_cron_wrapped].join("\n\n")
     end
@@ -47,9 +47,11 @@ protected
   def read_crontab
     return @current_crontab if @current_crontab
   
-    command = ['crontab -l']
-    command_results  = %x[#{command.join(' ')} 2> /dev/null]
-    @current_crontab = $?.exitstatus.zero? ? command_results : ''
+    # command = ['crontab -l']
+    # command_results  = %x[#{command.join(' ')} 2> /dev/null]
+    # @current_crontab = $?.exitstatus.zero? ? command_results : ''
+    
+    @current_crontab = %x[crontab -l 2> /dev/null]
   end
 
   def comment_base
