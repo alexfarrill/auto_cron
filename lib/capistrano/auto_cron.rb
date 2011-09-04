@@ -1,7 +1,7 @@
 Capistrano::Configuration.instance.load do
   namespace :auto_cron do
     task :publish, :roles => :publish do
-      run "cd #{current_path} && rake TEMPLATE=publish APPLICATION=#{application} RAILS_ENV=#{rails_env} auto_cron"
+      run "cd #{current_path} && #{rake} TEMPLATE=publish APPLICATION=#{application} RAILS_ENV=#{rails_env} auto_cron"
     end
 
     desc "Connects to each box individually and installs the specified cron 
@@ -12,7 +12,7 @@ Capistrano::Configuration.instance.load do
         targets = []
         targets.push sessions[sd]
 
-        Command.process( "cd #{current_path} && rake TEMPLATE=#{sd.options[:crontab]} RAILS_ENV=#{rails_env} auto_cron", 
+        Command.process( "cd #{current_path} && #{rake} TEMPLATE=#{sd.options[:crontab]} RAILS_ENV=#{rails_env} auto_cron", 
                           targets, options.merge(:logger => logger), &block)
 
         logger.debug "creating crontab:#{sd.options[:crontab]} on #{sd.host}"
