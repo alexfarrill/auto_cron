@@ -46,13 +46,7 @@ protected
   end
 
   def read_crontab
-    return @current_crontab if @current_crontab
-  
-    # command = ['crontab -l']
-    # command_results  = %x[#{command.join(' ')} 2> /dev/null]
-    # @current_crontab = $?.exitstatus.zero? ? command_results : ''
-    
-    @current_crontab = %x[crontab -l 2> /dev/null]
+    @current_crontab ||= %x[crontab -l 2> /dev/null]
   end
 
   def comment_base
