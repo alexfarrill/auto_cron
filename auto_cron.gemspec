@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{auto_cron}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alex Farrill"]
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "generators/auto_cron/templates/publish.erb",
     "install.rb",
     "lib/auto_cron.rb",
+    "lib/auto_cron/railtie.rb",
     "lib/capistrano/auto_cron.rb",
     "lib/tasks/auto_cron_tasks.rake",
     "test/helper.rb",
