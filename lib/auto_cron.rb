@@ -1,11 +1,11 @@
 require 'auto_cron/railtie' if defined?(Rails)
 
 class AutoCron
-  def initialize( template, application )
+  def initialize( templates, application )
     require 'erb'
 
     @auto_cron_dir = File.join( Rails.root, "config", "auto_cron" )
-    @template = template
+    @templates = templates.split(",")
     @application = application
   end
 
@@ -41,8 +41,10 @@ protected
     else
       ''
     end
-    full_template_path = File.join( @auto_cron_dir, "#{ @template }.erb" )
-    header + "\n\n" + ERB.new( File.read( full_template_path ) ).result
+    @templates.each do |template|
+      full_template_path = File.join( @auto_cron_dir, "#{ template }.erb" )
+      header + "\n\n" + ERB.new( File.read( full_template_path ) ).result
+    end
   end
 
   def read_crontab
