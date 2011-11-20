@@ -43,8 +43,10 @@ protected
     end
     @templates.each do |template|
       full_template_path = File.join( @auto_cron_dir, "#{ template }.erb" )
-      header + "\n\n" + ERB.new( File.read( full_template_path ) ).result
+      header += "\n\n" + ERB.new( File.read( full_template_path ) ).result
     end
+    
+    header
   end
 
   def read_crontab
