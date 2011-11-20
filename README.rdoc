@@ -1,19 +1,44 @@
 = auto_cron
 
-Description goes here.
+Powerful way to manage crontabs using capistrano.
+
+== Getting started
+1) Add auto_cron to your Gemfile
+
+2) In your capistrano deploy.rb file, add:
+
+require "capistrano/auto_cron"
+
+after "deploy:restart", "auto_cron:publish"
+
+3) If using ext/multistage: In deploy/production.rb, e.g. add:
+
+set :auto_cron_templates, %w( publish production )
+
+role :publish_crons, "cron-internal.example.com"
+
+4) In config/auto_cron, add erb files corresponding to the files specified in step 3
+
+e.g., config/auto_cron/publish.erb
+
+# crons for production
+*/5 * * * * cd /mnt/apps/mysite && bundle exec rake thinking_sphinx:index RAILS_ENV=<%= Rails.env %>
+
+== Advantages over other ruby cron managers
+
+* Uses crontab syntax, not a DSL that is going to get in your way
+
+* Uses ERB, everyone is familiar
+
+* Customize crons across environment
+
+* Crons are namespaced, so you can write crons for multiple apps to the same crontab without collision
 
 == Contributing to auto_cron
  
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+* Contributions welcome, fork the project
 
 == Copyright
 
-Copyright (c) 2011 Alex Farrill. See LICENSE.txt for
-further details.
+Copyright (c) 2011 Alex Farrill. See LICENSE.txt for further details.
 
