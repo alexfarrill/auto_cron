@@ -32,7 +32,7 @@ e.g., config/auto_cron/publish.erb
 
 * Customize crons across environment
 
-* Crons are namespaced, so you can write crons for multiple apps to the same crontab without collision
+* Crons are namespaced using application name specified in capistrano deploy file, so you can write crons for multiple apps to the same crontab without collision
 
 == Contributing to auto_cron
  
