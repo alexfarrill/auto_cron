@@ -1,7 +1,7 @@
 Capistrano::Configuration.instance.load do
   namespace :auto_cron do
     task :publish, :roles => :publish do
-      run "cd #{release_path} && #{rake} TEMPLATES=#{options[:crontabs].join(",")} APPLICATION=#{application} RAILS_ENV=#{rails_env} auto_cron"
+      run "cd #{release_path} && #{rake} TEMPLATES=#{fetch(:crontabs, %w( publish )).join(",")} APPLICATION=#{application} RAILS_ENV=#{rails_env} auto_cron"
     end
 
     desc "Connects to each box individually and installs the specifed cron 
