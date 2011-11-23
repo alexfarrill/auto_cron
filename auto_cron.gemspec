@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{auto_cron}
-  s.version = "0.1.14"
+  s.version = "0.1.15"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alex Farrill"]
-  s.date = %q{2011-11-19}
+  s.date = %q{2011-11-23}
   s.description = %q{Generate a crontab}
   s.email = %q{alex.farrill@gmail.com}
   s.extra_rdoc_files = [
