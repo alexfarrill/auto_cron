@@ -3,8 +3,7 @@ require 'auto_cron/railtie' if defined?(Rails)
 class AutoCron
   def initialize( templates, application )
     require 'erb'
-
-    @auto_cron_dir = File.join( Rails.root, "config", "auto_cron" )
+    @auto_cron_dir = ENV["CONFIG_AUTO_CRON"]
     @templates = templates.split(",")
     @application = application
   end
