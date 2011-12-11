@@ -57,11 +57,11 @@ protected
   end
 
   def comment_open
-    "# Begin #{ comment_base }"
+    "# -- #{ comment_base } Begin -- #"
   end
 
   def comment_close
-    "# End #{ comment_base }"
+    "# -- #{ comment_base } End -- #"
   end
 
 end
